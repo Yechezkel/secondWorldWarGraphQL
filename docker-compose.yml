@@ -9,7 +9,7 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      - "5437:5437"
+      - "5437:5432"
 
   api:
     build: .
@@ -18,7 +18,7 @@ services:
     ports:
       - "5005:5005"
     environment:
-      - DATABASE_URL=postgresql://admin:1234@localhost:5437/missions_db
+      - DATABASE_URL=postgresql://admin:1234@localhost:5432/missions_db
 
 volumes:
   db_data:

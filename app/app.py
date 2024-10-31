@@ -1,4 +1,5 @@
 from flask import Flask
+import psycopg2
 from flask_graphql import GraphQLView
 from database import db_session, connection_string  # init_db,
 from schema import schema
@@ -10,8 +11,6 @@ app.debug = True
 app.config["SQLALCHEMY_DATABASE_URI"] = connection_string
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# with app.app_context():
-#     init_db()  # no need
 
 app.add_url_rule('/graphql', view_func=GraphQLView.as_view('graphql', schema=schema, graphiql=True))
 
